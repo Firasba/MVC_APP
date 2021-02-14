@@ -1,0 +1,70 @@
+﻿@model tuto.Models.Inventory
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Inventory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NEName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NEName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ManufacturerData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManufacturerData)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

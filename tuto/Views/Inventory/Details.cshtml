@@ -1,0 +1,65 @@
+﻿@model tuto.Models.Inventory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Inventory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NEName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NEName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoardType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoardType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ManufacturerData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManufacturerData)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

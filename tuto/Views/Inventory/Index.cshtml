@@ -1,0 +1,99 @@
+﻿@model IEnumerable<tuto.Models.Inventory>
+
+<div class="jumbotron">
+    <h2>Lazy Loading Example Using Ajax in MVC Application</h2>
+    <p class="lead">
+        <br />
+        <h4>Export Data using different file format like Excel, CSV, PDF, WORD, JSON, XML, TEXT etc.</h4>
+        @*<span class="text-primary">
+                Once user scroll down page then scroll event gets fire and append records to existing table.
+                It loads only 20 records at a time based on each scroll down event
+            </span>.*@
+    </p>
+</div>
+
+<div class="table-responsive col-md-12" id="divajaxCall">
+    <form action="" method="post">
+        <div class="row">
+            <div style="text-align:center; padding:0 0 0 0">
+                <button type="submit" value="ExportToExcel" name="action">
+                    <i class="far fa-file-excel"></i> Export To Excel
+                </button>
+                <button type="submit" value="DeleteAllR" name="action">
+                    <i class="far fa-file-excel"></i> Delete All records
+                </button>
+            </div>    
+        </div>
+        <div class="row" style="text-align:center; padding : 5px 5px 5px 5px"></div>
+        <div class="row">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BoardName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NEName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BoardType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SN)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PN)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ManufacturerData)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        @Html.Partial("~/Views/Inventory/InventoryList.cshtml")
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div id="loading" style="text-align:center; padding:0 0 0 0">
+                <img src='~/Content/progress-loader1.gif' />
+            </div>
+        </div>
+
+        <div class="divfooter">
+        </div>
+    </form>
+</div>
+<div id="divHide"></div>
+@section scripts{
+    <script src="~/Scripts/lazyLoading.js"></script>
+    <script type="text/javascript">
+            $(function () {
+                $("div#loading").hide();
+                $("#divajaxCall").css("border", "1px solid gray");
+                $("#divajaxCall").css("padding", "10px 5px 5px 5px");
+                $("#divajaxCall").css("border-radius", "10px");
+            });
+            var ajaxCallUrl = '@Url.RouteUrl("InventoryDataList")';
+
+            $(window).scroll(scrollHandler);
+    </script>
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/CustomStyle.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/00267cf40d.js" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+

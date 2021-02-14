@@ -1,0 +1,82 @@
+﻿@model IEnumerable<tuto.Models.Inventory>
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+    <fieldset>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+            <div class="modal-section-header">
+                <p>Details  </p>
+            </div>
+        </div>
+
+
+
+        <div>
+
+            @using (Html.BeginForm("ImportFromExcel", "Inventory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary();
+                <input type="file" name="postedFile" />
+                <div>
+                    <input type="submit" button id="upload" value="Import" class="btn-success" />
+                </div>
+            }
+        </div>
+
+    </fieldset>
+</body>
+</html>
+
+
+<h2>InsuredDetails</h2>
+
+
+@section scripts{
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script>
+        $("#upload").click(function () {
+            debugger;
+            if (window.FormData == undefined)
+                alert("Error: FormData is undefined");
+
+            else {
+                var fileUpload = $("#postedFile").get(0);
+                var files = fileUpload.files;
+
+                var fileData = new FormData();
+
+                fileData.append(files[0].name, files[0]);
+
+                $.ajax({
+                    url: '/Inventory/ImportFromExcel',
+                    type: 'post',
+                    datatype: 'json',
+                    contentType: false,
+                    processData: false,
+                    async: false,
+                    data: fileData,
+                    success: function (response) {
+                        alert(response);
+                    }
+                });
+            }
+
+        });
+    </script>
+
+}
+

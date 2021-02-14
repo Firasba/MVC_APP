@@ -1,0 +1,16 @@
+﻿@model IEnumerable<tuto.Models.Inventory>
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.BoardName)
+    </td>
+    <td>@Html.DisplayFor(modelItem => item.NEName)</td>
+    <td> @Html.DisplayFor(modelItem => item.BoardType)</td>
+    <td> @Html.DisplayFor(modelItem => item.SN)</td>
+    <td> @Html.DisplayFor(modelItem => item.PN)</td>
+    <td> @Html.DisplayFor(modelItem => item.ManufacturerData)</td>
+</tr>
+}
+
+

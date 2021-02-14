@@ -1,0 +1,36 @@
+﻿@model IEnumerable<tuto.Models.Inventory>
+
+
+@using (Html.BeginForm("InventoryList2", "Inventory", FormMethod.Get))
+{
+    <p>
+        Board Name: <input type="text" name="id1">
+        NE Name: <input type="text" name="id2">
+        Board Type: <input type="text" name="id3">
+        SN(serial Number): <input type="text" name="id4">
+        PN(BOM code): <input type="text" name="id5">
+        <input type="submit" value="Filter" />
+    </p>
+}
+
+
+<h2>Total Records: @Model.Count()</h2>
+
+
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.BoardName)
+    </td>
+    <td>@Html.DisplayFor(modelItem => item.NEName)</td>
+    <td> @Html.DisplayFor(modelItem => item.BoardType)</td>
+    <td> @Html.DisplayFor(modelItem => item.SN)</td>
+    <td> @Html.DisplayFor(modelItem => item.PN)</td>
+    <td> @Html.DisplayFor(modelItem => item.ManufacturerData)</td>
+</tr>
+}
+
+
+
